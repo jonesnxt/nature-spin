@@ -4,7 +4,9 @@
     "matchingSound": "https://audio.cdn.gometa.io/45eb80dd-d339-4d8d-93ff-d27bfc9e81c3-out.mp3",
     "swappingSound": "https://audio.cdn.gometa.io/29927932-c4a6-4d25-9c43-667e1b580221-out.mp3",
     "winSound": "https://objects.koji-cdn.com/4f8c2997-1f38-4ea9-8297-7a08abd60ef9/d8c3e3bb-f17f-4187-b8dc-56fc351251de.mp3",
-    "loseSound": "https://objects.koji-cdn.com/4f8c2997-1f38-4ea9-8297-7a08abd60ef9/33583063-66ce-4c46-8964-bd841b96d4ea.mp3"
+    "loseSound": "https://objects.koji-cdn.com/4f8c2997-1f38-4ea9-8297-7a08abd60ef9/33583063-66ce-4c46-8964-bd841b96d4ea.mp3",
+    "spinSound": "https://objects.koji-cdn.com/9649a5cc-380a-4e8f-bcdb-21110518587e/c19d60b9-fdd0-4b4b-826c-5d32c79add0c.mp3",
+    "wheelStop": "https://objects.koji-cdn.com/9649a5cc-380a-4e8f-bcdb-21110518587e/290b6144-8cb7-4cfe-b1c5-49f46d212c80.mp3"
   },
   "@@editor": [
     {
@@ -29,6 +31,18 @@
           "key": "loseSound",
           "name": "Lose Sound",
           "description": "URL of audio file to play when the player loses",
+          "type": "sound"
+        },
+        {
+          "key": "spinSound",
+          "name": "Spin Sound",
+          "description": "Play this sound when the player starts spinning the wheels",
+          "type": "sound"
+        },
+        {
+          "key": "wheelStop",
+          "name": "Wheel Stopped Sound",
+          "description": "Play this sound when the player stops a wheel",
           "type": "sound"
         }
       ]

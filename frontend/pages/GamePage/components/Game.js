@@ -19,8 +19,8 @@ import Scoring from '../helpers/Scoring.js';
 const Pieces = styled.div`
 	display: flex;
 	align-items: center;
-	width: ${({ width }) => width}px;
-	height: ${({ height }) => height}px;
+	width: ${({ width }) => width + 10}px;
+	height: ${({ height }) => height + 10}px;
     position: relative;
     margin: 0 auto;
     overflow: hidden;
@@ -29,6 +29,7 @@ const Pieces = styled.div`
 const Container = styled.div`
     width: ${({ width }) => width}px;
     margin: 0 auto;
+    margin-bottom: 50px;
 `;
 
 const ReRoll = styled.div`
@@ -37,13 +38,14 @@ const ReRoll = styled.div`
     border: 5px solid white;
     border-radius: ${({ blockSize }) => blockSize / 4}px;
     background-color: rgba(0,0,0,0.1);
+    padding: 8px;
     :hover {
         background-color: rgba(0,0,0,0.6);
         ${({ disabled }) => disabled && 'background-color: rgba(240, 30, 10, 0.8);'}
     }
 
     :active {
-        transform: scale(1.1, 1.1);
+        transform: scale(1.2, 1.2);
     }
     cursor: pointer;
     user-select: none;
@@ -72,6 +74,8 @@ class Game extends React.Component {
         this.backgroundMusic = Sound.findAndLoop(this.context.sounds.backgroundMusic, this.props.muted);
         this.winSound = Sound.find(this.context.sounds.winSound);
         this.loseSound = Sound.find(this.context.sounds.loseSound);
+        this.spinSound = Sound.find(this.context.sounds.spinSound);
+        this.wheelStopSound = Sound.find(this.context.sounds.wheelStop);
         Scoring.getScores();
 
         document.addEventListener('keypress', (e) => {
@@ -140,9 +144,6 @@ class Game extends React.Component {
             
             this.manageAnimation(() => {
                 // setup
-                newBoard = this.copy(this.state.board);
-                newBoard = Match.addPieces(newBoard, found);
-                this.setState({ board: newBoard });
             }, () => {
                 // animate
                 newBoard = this.copy(this.state.board);
@@ -212,8 +213,10 @@ class Game extends React.Component {
         if(this.state.rowsSpinning === 0) {
             if(this.state.score < this.state.currentBet) return;
             this.startSpin();
+            Sound.play(this.spinSound, this.props.muted);
         } else {
             this.stopSpin();
+            Sound.play(this.wheelStopSound, this.props.muted);
         }
     }
 
@@ -311,10 +314,10 @@ class Game extends React.Component {
                     }} 
                 />
                 <ReRoll disabled={this.state.rowsSpinning === 0 && this.state.score < this.state.currentBet} onClick={() => this.reroll()} blockSize={this.state.blockSize}>{this.state.rowsSpinning === 0 ? 'Spin Again' : 'Stop'}</ReRoll>
-
-                {this.state.gameOver && (
-                    <GameOver score={this.state.score} onClose={() => this.newGame()} />
+                {this.state.rowsSpinning === 0 && this.state.score < this.state.currentBet && (
+                    <ReRoll onClick={() => window.location.reload()} blockSize={this.state.blockSize}>Restart</ReRoll>
                 )}
+
             </Container>
         );
 	}

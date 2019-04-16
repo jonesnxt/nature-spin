@@ -1,4 +1,4 @@
-![Nature Spin](https://i.imgur.com/eUMChDK.png)
+# Spin to Win
 
 *An easily customizable slot machine type game*
 

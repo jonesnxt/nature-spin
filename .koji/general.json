@@ -1,9 +1,9 @@
 {
   "general": {
-    "name": "Nature Spin",
+    "name": "Spin to Win",
     "buttonText": "Begin",
     "fontFamily": "https://fonts.googleapis.com/css?family=Ultra",
-    "backgroundImage": "https://i.pinimg.com/originals/f7/ed/27/f7ed277bdaa9fc93381f252cdb5c7bbf.jpg",
+    "backgroundImage": "https://images.koji-cdn.com/9649a5cc-380a-4e8f-bcdb-21110518587e/LandingPage_genericbg_BS.jpg",
     "width": "5",
     "height": "3",
     "animationLength": "500",
