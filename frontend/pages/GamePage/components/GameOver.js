@@ -72,7 +72,6 @@ class GameOver extends React.PureComponent {
 
     componentDidMount() {
         Scoring.getScores().then((resp) => {
-            console.log(resp);
             this.setState({ scores: resp.scores });
         });
     }

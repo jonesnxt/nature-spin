@@ -79,7 +79,6 @@ class Game extends React.Component {
         Scoring.getScores();
 
         document.addEventListener('keypress', (e) => {
-            console.log(e.keyCode);
             if(e.keyCode === 32) {
                 // space was pressed
                 this.reroll();
@@ -138,7 +137,6 @@ class Game extends React.Component {
         let newBoard = this.copy(this.state.board);
         
         let found = Match.find(newBoard, this.context.general.width, this.context.general.height);
-        console.log(found);
         if (found.length > 0) {
             // we have at least one match, deal with it.
             
@@ -245,7 +243,6 @@ class Game extends React.Component {
 
     collectEffects(newBoard, marked) {
         let effects = [];
-        console.log(marked);
         let newScore = this.state.score;
         marked.forEach((mark) => {
             let amount = this.context.general.baseScore * (this.state.currentBet / 100);

@@ -19,7 +19,6 @@ function getImage(type) {
 function getNumTypes() {
     let i = 0;
     while(koji.pieces[`image${i + 1}`] && koji.pieces[`image${i + 1}`].length !== 0) i ++;
-    console.log(i);
     return i;
 }
 

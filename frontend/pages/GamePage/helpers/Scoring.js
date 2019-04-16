@@ -17,7 +17,6 @@ function addScore(name, score) {
                 score,
             }
         }).then((response) => {
-            console.log(response);
         })
     });
 }
